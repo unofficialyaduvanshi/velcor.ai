@@ -2,10 +2,28 @@ import Navbar from "../components/Navbar";
 import Footer from "../sections/Footer";
 import { useState } from "react";
 import {
-  Target, Database, Brain, Users, PenLine, Share2, TrendingUp,
-  Sparkles, ArrowRight, Mail, Workflow, BarChart3, CheckCircle,
-  Zap, AlertCircle, RefreshCw, Filter, Search, MessageSquare,
-  Bell, Settings, GitBranch
+  Target,
+  Database,
+  Brain,
+  Users,
+  PenLine,
+  Share2,
+  TrendingUp,
+  Sparkles,
+  ArrowRight,
+  Mail,
+  Workflow,
+  BarChart3,
+  CheckCircle,
+  Zap,
+  AlertCircle,
+  RefreshCw,
+  Filter,
+  Search,
+  MessageSquare,
+  Bell,
+  Settings,
+  GitBranch,
 } from "lucide-react";
 
 const flows = [
@@ -43,7 +61,13 @@ const flows = [
   },
 ];
 
-function FlowNode({ icon: Icon, title, subtitle, type = "default", pulse = false }) {
+function FlowNode({
+  icon: Icon,
+  title,
+  subtitle,
+  type = "default",
+  pulse = false,
+}) {
   const styles = {
     default: "border-black/10 bg-white text-black",
     blue: "border-blue-400/40 bg-blue-500 text-white",
@@ -76,7 +100,9 @@ function FlowNode({ icon: Icon, title, subtitle, type = "default", pulse = false
         <div>
           <p className="text-xs font-bold leading-tight">{title}</p>
           {subtitle && (
-            <p className={`text-[10px] leading-tight mt-0.5 ${type === "blue" || type === "dark" ? "opacity-60" : "text-black/50"}`}>
+            <p
+              className={`text-[10px] leading-tight mt-0.5 ${type === "blue" || type === "dark" ? "opacity-60" : "text-black/50"}`}
+            >
               {subtitle}
             </p>
           )}
@@ -88,14 +114,20 @@ function FlowNode({ icon: Icon, title, subtitle, type = "default", pulse = false
 
 function Arrow({ label, direction = "down" }) {
   return (
-    <div className={`flex ${direction === "right" ? "flex-row items-center" : "flex-col items-center"} gap-1`}>
-      <div className={`${direction === "right" ? "h-px w-8 bg-black/25" : "h-8 w-px bg-black/25"}`} />
+    <div
+      className={`flex ${direction === "right" ? "flex-row items-center" : "flex-col items-center"} gap-1`}
+    >
+      <div
+        className={`${direction === "right" ? "h-px w-8 bg-black/25" : "h-8 w-px bg-black/25"}`}
+      />
       {label && (
         <span className="rounded-md bg-blue-100 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-blue-700">
           {label}
         </span>
       )}
-      <div className={`${direction === "right" ? "h-px w-8 bg-black/25" : "h-8 w-px bg-black/25"}`} />
+      <div
+        className={`${direction === "right" ? "h-px w-8 bg-black/25" : "h-8 w-px bg-black/25"}`}
+      />
     </div>
   );
 }
@@ -110,7 +142,10 @@ function DecisionNode({ question }) {
 
 function SplitLine({ branches = 2 }) {
   return (
-    <div className="relative mx-auto h-10" style={{ width: branches === 3 ? "80%" : "60%" }}>
+    <div
+      className="relative mx-auto h-10"
+      style={{ width: branches === 3 ? "80%" : "60%" }}
+    >
       <div className="absolute left-1/2 top-0 h-1/2 w-px -translate-x-1/2 bg-black/20" />
       <div className="absolute left-0 right-0 top-1/2 h-px bg-black/20" />
       {branches === 2 && (
@@ -132,7 +167,10 @@ function SplitLine({ branches = 2 }) {
 
 function JoinLine({ branches = 2 }) {
   return (
-    <div className="relative mx-auto h-10" style={{ width: branches === 3 ? "80%" : "60%" }}>
+    <div
+      className="relative mx-auto h-10"
+      style={{ width: branches === 3 ? "80%" : "60%" }}
+    >
       <div className="absolute left-0 top-0 h-1/2 w-px bg-black/20" />
       <div className="absolute right-0 top-0 h-1/2 w-px bg-black/20" />
       <div className="absolute left-0 right-0 top-1/2 h-px bg-black/20" />
@@ -146,29 +184,68 @@ function OutboundFlow() {
     <div className="space-y-0">
       {/* Top sources */}
       <div className="grid grid-cols-3 gap-3">
-        <FlowNode icon={Bell} title="Buying Signals" subtitle="Job changes, funding, tech installs" />
-        <FlowNode icon={Target} title="ICP Filters" subtitle="Industry, size, title" />
-        <FlowNode icon={Database} title="TAM Scraping" subtitle="Apollo, LinkedIn, Clay" />
+        <FlowNode
+          icon={Bell}
+          title="Buying Signals"
+          subtitle="Job changes, funding, tech installs"
+        />
+        <FlowNode
+          icon={Target}
+          title="ICP Filters"
+          subtitle="Industry, size, title"
+        />
+        <FlowNode
+          icon={Database}
+          title="TAM Scraping"
+          subtitle="Apollo, LinkedIn, Clay"
+        />
       </div>
       <SplitLine branches={3} />
       <Arrow />
 
       {/* Strategy */}
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Brain} title="Campaign Strategy" subtitle="Offer, angle, hook" type="dark" />
+        <FlowNode
+          icon={Brain}
+          title="Campaign Strategy"
+          subtitle="Offer, angle, hook"
+          type="dark"
+        />
         <Arrow />
-        <FlowNode icon={Users} title="Contact Sourcing + Enrichment" subtitle="Name, email, LinkedIn, intent" />
+        <FlowNode
+          icon={Users}
+          title="Contact Sourcing + Enrichment"
+          subtitle="Name, email, LinkedIn, intent"
+        />
         <Arrow />
-        <FlowNode icon={Filter} title="Lead Scoring & Tiering" subtitle="A/B/C tier prioritization" />
+        <FlowNode
+          icon={Filter}
+          title="Lead Scoring & Tiering"
+          subtitle="A/B/C tier prioritization"
+        />
         <Arrow />
-        <FlowNode icon={PenLine} title="AI Personalized Copywriting" subtitle="Per-account messaging" type="blue" pulse />
+        <FlowNode
+          icon={PenLine}
+          title="AI Personalized Copywriting"
+          subtitle="Per-account messaging"
+          type="blue"
+          pulse
+        />
       </div>
 
       <SplitLine branches={2} />
 
       <div className="grid grid-cols-2 gap-3">
-        <FlowNode icon={Mail} title="Email Sequences" subtitle="3–5 touch cadence" />
-        <FlowNode icon={MessageSquare} title="LinkedIn Outreach" subtitle="Connection + DM" />
+        <FlowNode
+          icon={Mail}
+          title="Email Sequences"
+          subtitle="3–5 touch cadence"
+        />
+        <FlowNode
+          icon={MessageSquare}
+          title="LinkedIn Outreach"
+          subtitle="Connection + DM"
+        />
       </div>
 
       <JoinLine branches={2} />
@@ -181,15 +258,29 @@ function OutboundFlow() {
       <SplitLine branches={2} />
 
       <div className="grid grid-cols-2 gap-3">
-        <FlowNode icon={CheckCircle} title="Book Meeting" subtitle="Calendly auto-route" type="blue" />
-        <FlowNode icon={RefreshCw} title="Re-engage Later" subtitle="30-day nurture seq." />
+        <FlowNode
+          icon={CheckCircle}
+          title="Book Meeting"
+          subtitle="Calendly auto-route"
+          type="blue"
+        />
+        <FlowNode
+          icon={RefreshCw}
+          title="Re-engage Later"
+          subtitle="30-day nurture seq."
+        />
       </div>
 
       <JoinLine branches={2} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={TrendingUp} title="CRM Sync + Sales Handoff" subtitle="Salesforce / HubSpot" type="dark" />
+        <FlowNode
+          icon={TrendingUp}
+          title="CRM Sync + Sales Handoff"
+          subtitle="Salesforce / HubSpot"
+          type="dark"
+        />
       </div>
     </div>
   );
@@ -200,18 +291,35 @@ function CRMFlow() {
     <div className="space-y-0">
       <div className="grid grid-cols-3 gap-3">
         <FlowNode icon={Mail} title="Email Capture" subtitle="Form / booking" />
-        <FlowNode icon={Search} title="Website Visitor" subtitle="IP enrichment" />
+        <FlowNode
+          icon={Search}
+          title="Website Visitor"
+          subtitle="IP enrichment"
+        />
         <FlowNode icon={Share2} title="Outbound Reply" subtitle="Warm lead" />
       </div>
       <SplitLine branches={3} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Database} title="CRM Record Created" subtitle="HubSpot / Salesforce" />
+        <FlowNode
+          icon={Database}
+          title="CRM Record Created"
+          subtitle="HubSpot / Salesforce"
+        />
         <Arrow />
-        <FlowNode icon={Zap} title="Data Enrichment" subtitle="Clearbit, Clay, Apollo" type="blue" />
+        <FlowNode
+          icon={Zap}
+          title="Data Enrichment"
+          subtitle="Clearbit, Clay, Apollo"
+          type="blue"
+        />
         <Arrow />
-        <FlowNode icon={BarChart3} title="Lead Scoring Engine" subtitle="Firmographic + behavioral" />
+        <FlowNode
+          icon={BarChart3}
+          title="Lead Scoring Engine"
+          subtitle="Firmographic + behavioral"
+        />
         <Arrow />
         <DecisionNode question="Score ≥ 70?" />
       </div>
@@ -219,17 +327,36 @@ function CRMFlow() {
       <SplitLine branches={2} />
 
       <div className="grid grid-cols-2 gap-3">
-        <FlowNode icon={Zap} title="Auto-Route to AE" subtitle="High-fit account" type="blue" pulse />
-        <FlowNode icon={RefreshCw} title="Nurture Sequence" subtitle="Education content" />
+        <FlowNode
+          icon={Zap}
+          title="Auto-Route to AE"
+          subtitle="High-fit account"
+          type="blue"
+          pulse
+        />
+        <FlowNode
+          icon={RefreshCw}
+          title="Nurture Sequence"
+          subtitle="Education content"
+        />
       </div>
 
       <JoinLine branches={2} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Settings} title="Pipeline Stage Automation" subtitle="Task + reminder triggers" />
+        <FlowNode
+          icon={Settings}
+          title="Pipeline Stage Automation"
+          subtitle="Task + reminder triggers"
+        />
         <Arrow />
-        <FlowNode icon={BarChart3} title="Revenue Dashboard" subtitle="Real-time KPIs" type="dark" />
+        <FlowNode
+          icon={BarChart3}
+          title="Revenue Dashboard"
+          subtitle="Real-time KPIs"
+          type="dark"
+        />
       </div>
     </div>
   );
@@ -239,40 +366,96 @@ function ContentFlow() {
   return (
     <div className="space-y-0">
       <div className="grid grid-cols-3 gap-3">
-        <FlowNode icon={Target} title="ICP Research" subtitle="Pain points, language" />
-        <FlowNode icon={Brain} title="Content Strategy" subtitle="Themes & pillars" />
-        <FlowNode icon={Sparkles} title="Tone of Voice" subtitle="Brand positioning" />
+        <FlowNode
+          icon={Target}
+          title="ICP Research"
+          subtitle="Pain points, language"
+        />
+        <FlowNode
+          icon={Brain}
+          title="Content Strategy"
+          subtitle="Themes & pillars"
+        />
+        <FlowNode
+          icon={Sparkles}
+          title="Tone of Voice"
+          subtitle="Brand positioning"
+        />
       </div>
       <SplitLine branches={3} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Users} title="Profile Optimization" subtitle="Headline, about, banner" />
+        <FlowNode
+          icon={Users}
+          title="Profile Optimization"
+          subtitle="Headline, about, banner"
+        />
         <Arrow />
-        <FlowNode icon={PenLine} title="Topic Mining" subtitle="Trending + evergreen ideas" />
+        <FlowNode
+          icon={PenLine}
+          title="Topic Mining"
+          subtitle="Trending + evergreen ideas"
+        />
         <Arrow />
-        <FlowNode icon={Brain} title="AI Content Drafts" subtitle="GPT-4 + brand voice" type="blue" pulse />
+        <FlowNode
+          icon={Brain}
+          title="AI Content Drafts"
+          subtitle="GPT-4 + brand voice"
+          type="blue"
+          pulse
+        />
         <Arrow label="review" />
-        <FlowNode icon={CheckCircle} title="Human Approval" subtitle="Founder / editor review" />
+        <FlowNode
+          icon={CheckCircle}
+          title="Human Approval"
+          subtitle="Founder / editor review"
+        />
       </div>
 
       <SplitLine branches={3} />
 
       <div className="grid grid-cols-3 gap-3">
-        <FlowNode icon={TrendingUp} title="TOFU Posts" subtitle="Awareness & reach" />
-        <FlowNode icon={Users} title="MOFU Content" subtitle="Trust & credibility" />
-        <FlowNode icon={ArrowRight} title="BOFU CTAs" subtitle="Offers & demos" />
+        <FlowNode
+          icon={TrendingUp}
+          title="TOFU Posts"
+          subtitle="Awareness & reach"
+        />
+        <FlowNode
+          icon={Users}
+          title="MOFU Content"
+          subtitle="Trust & credibility"
+        />
+        <FlowNode
+          icon={ArrowRight}
+          title="BOFU CTAs"
+          subtitle="Offers & demos"
+        />
       </div>
 
       <JoinLine branches={2} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Share2} title="Consistent Distribution" subtitle="LinkedIn + Newsletter" />
+        <FlowNode
+          icon={Share2}
+          title="Consistent Distribution"
+          subtitle="LinkedIn + Newsletter"
+        />
         <Arrow />
-        <FlowNode icon={MessageSquare} title="Warm Lead Monitoring" subtitle="Likers, commenters, DMs" type="dark" />
+        <FlowNode
+          icon={MessageSquare}
+          title="Warm Lead Monitoring"
+          subtitle="Likers, commenters, DMs"
+          type="dark"
+        />
         <Arrow />
-        <FlowNode icon={Mail} title="Outbound Follow-up Trigger" subtitle="Auto-add to sequence" type="blue" />
+        <FlowNode
+          icon={Mail}
+          title="Outbound Follow-up Trigger"
+          subtitle="Auto-add to sequence"
+          type="blue"
+        />
       </div>
     </div>
   );
@@ -282,17 +465,38 @@ function InboundFlow() {
   return (
     <div className="space-y-0">
       <div className="grid grid-cols-3 gap-3">
-        <FlowNode icon={Search} title="Website Visit" subtitle="Intent detected" />
-        <FlowNode icon={Mail} title="Form Submission" subtitle="Demo / contact request" />
-        <FlowNode icon={Share2} title="Referral Lead" subtitle="Partner / intro" />
+        <FlowNode
+          icon={Search}
+          title="Website Visit"
+          subtitle="Intent detected"
+        />
+        <FlowNode
+          icon={Mail}
+          title="Form Submission"
+          subtitle="Demo / contact request"
+        />
+        <FlowNode
+          icon={Share2}
+          title="Referral Lead"
+          subtitle="Partner / intro"
+        />
       </div>
       <SplitLine branches={3} />
       <Arrow />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={Zap} title="Instant Enrichment" subtitle="Company, title, LinkedIn" type="blue" />
+        <FlowNode
+          icon={Zap}
+          title="Instant Enrichment"
+          subtitle="Company, title, LinkedIn"
+          type="blue"
+        />
         <Arrow />
-        <FlowNode icon={BarChart3} title="Fit Scoring" subtitle="ICP match percentage" />
+        <FlowNode
+          icon={BarChart3}
+          title="Fit Scoring"
+          subtitle="ICP match percentage"
+        />
         <Arrow />
         <DecisionNode question="High Fit?" />
       </div>
@@ -301,12 +505,31 @@ function InboundFlow() {
 
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-3">
-          <FlowNode icon={Bell} title="AE Alert" subtitle="Slack + CRM task" type="blue" pulse />
-          <FlowNode icon={CheckCircle} title="Priority Follow-up" subtitle="Within 5 minutes" type="blue" />
+          <FlowNode
+            icon={Bell}
+            title="AE Alert"
+            subtitle="Slack + CRM task"
+            type="blue"
+            pulse
+          />
+          <FlowNode
+            icon={CheckCircle}
+            title="Priority Follow-up"
+            subtitle="Within 5 minutes"
+            type="blue"
+          />
         </div>
         <div className="space-y-3">
-          <FlowNode icon={Mail} title="Auto Nurture" subtitle="Personalized email seq." />
-          <FlowNode icon={RefreshCw} title="Retargeting Tags" subtitle="LinkedIn + Google ads" />
+          <FlowNode
+            icon={Mail}
+            title="Auto Nurture"
+            subtitle="Personalized email seq."
+          />
+          <FlowNode
+            icon={RefreshCw}
+            title="Retargeting Tags"
+            subtitle="LinkedIn + Google ads"
+          />
         </div>
       </div>
 
@@ -314,9 +537,18 @@ function InboundFlow() {
       <Arrow label="qualified" />
 
       <div className="mx-auto max-w-xs">
-        <FlowNode icon={GitBranch} title="Meeting Routing" subtitle="Round-robin or territory" />
+        <FlowNode
+          icon={GitBranch}
+          title="Meeting Routing"
+          subtitle="Round-robin or territory"
+        />
         <Arrow />
-        <FlowNode icon={TrendingUp} title="Pipeline Entry" subtitle="Opportunity created in CRM" type="dark" />
+        <FlowNode
+          icon={TrendingUp}
+          title="Pipeline Entry"
+          subtitle="Opportunity created in CRM"
+          type="dark"
+        />
       </div>
     </div>
   );
@@ -347,7 +579,7 @@ export default function Flowcharts() {
       `}</style>
 
       {/* Header */}
-      <section className="relative overflow-hidden px-5 pt-44 pb-20 text-center">
+      <section className="relative overflow-hidden px-5 md:pt-32 pt-28 pb-20 text-center">
         <div className="absolute inset-0 opacity-[0.3] bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.12)_1px,transparent_0)] bg-[size:22px_22px]" />
         <div className="absolute left-1/2 top-32 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-blue-200/25 blur-[100px]" />
 
@@ -357,11 +589,14 @@ export default function Flowcharts() {
           </p>
           <h1 className="text-5xl font-semibold tracking-[-0.06em] md:text-7xl">
             See every system
-            <span className="block font-serif italic font-normal">mapped end-to-end</span>
+            <span className="block font-serif italic font-normal">
+              mapped end-to-end
+            </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-black/60">
-            Interactive workflow diagrams showing exactly how Velcor.ai connects your
-            outbound, CRM, content, and inbound systems into one revenue engine.
+            Interactive workflow diagrams showing exactly how Velcor.ai connects
+            your outbound, CRM, content, and inbound systems into one revenue
+            engine.
           </p>
         </div>
       </section>
@@ -398,19 +633,22 @@ export default function Flowcharts() {
           <div className="rounded-[2rem] border border-black/10 bg-white/65 p-6 shadow-2xl shadow-black/5 backdrop-blur md:p-8">
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-semibold">{activeFlow?.label} Workflow</h2>
-                <p className="text-xs text-black/45 mt-0.5">Built & managed by Velcor.ai</p>
+                <h2 className="text-xl font-semibold">
+                  {activeFlow?.label} Workflow
+                </h2>
+                <p className="text-xs text-black/45 mt-0.5">
+                  Built & managed by Velcor.ai
+                </p>
               </div>
               <div className="flex items-center gap-2">
-                <span className={`h-3 w-3 rounded-full ${activeFlow?.color} animate-pulse`} />
+                <span
+                  className={`h-3 w-3 rounded-full ${activeFlow?.color} animate-pulse`}
+                />
                 <span className="text-xs text-black/40">Live system</span>
               </div>
             </div>
 
-            <div
-              key={active}
-              className="fade-up"
-            >
+            <div key={active} className="fade-up">
               <ActiveFlow />
             </div>
           </div>
@@ -420,15 +658,36 @@ export default function Flowcharts() {
       {/* Legend */}
       <section className="border-t border-black/10 bg-white/40 px-5 py-16">
         <div className="mx-auto max-w-4xl">
-          <h3 className="mb-8 text-center text-lg font-semibold">Diagram legend</h3>
+          <h3 className="mb-8 text-center text-lg font-semibold">
+            Diagram legend
+          </h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { type: "default", label: "Process step", desc: "Standard workflow action" },
-              { type: "blue", label: "AI-powered step", desc: "Automated or AI-assisted" },
-              { type: "dark", label: "System output", desc: "Final deliverable or CRM sync" },
-              { type: "decision", label: "Decision gate", desc: "Conditional routing logic" },
+              {
+                type: "default",
+                label: "Process step",
+                desc: "Standard workflow action",
+              },
+              {
+                type: "blue",
+                label: "AI-powered step",
+                desc: "Automated or AI-assisted",
+              },
+              {
+                type: "dark",
+                label: "System output",
+                desc: "Final deliverable or CRM sync",
+              },
+              {
+                type: "decision",
+                label: "Decision gate",
+                desc: "Conditional routing logic",
+              },
             ].map(({ type, label, desc }) => (
-              <div key={type} className="flex flex-col items-center gap-3 text-center">
+              <div
+                key={type}
+                className="flex flex-col items-center gap-3 text-center"
+              >
                 <FlowNode icon={Sparkles} title={label} type={type} />
                 <p className="text-xs text-black/50">{desc}</p>
               </div>
